@@ -1,0 +1,16 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+
+/config.js
+  Cache-Control: no-cache
+
+/script.js
+  Cache-Control: no-cache
+
+/saved
+  X-Robots-Tag: noindex
+
+/404
+  X-Robots-Tag: noindex

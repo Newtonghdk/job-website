@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImpactJobs - Meaningful Careers</title>
+
+  <style>
+    :root {
+      --primary-blue: #1458a6;
+      --dark-blue: #102d53;
+      --text-dark: #10233d;
+      --text-muted: #66758a;
+      --light-blue: #f4f8fc;
+      --border-blue: #dce8f5;
+      --white: #ffffff;
+      --ad-grey: #f5f6f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+    /* Header */
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e8eef5;
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 18px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: white;
+      background: var(--primary-blue);
+      font-weight: bold;
+    }
+
+    .brand-name {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      display: block;
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      gap: 24px;
+      color: #40536c;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .login {
+      color: var(--primary-blue);
+      font-size: 14px;
+    }
+
+    .button {
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 6px;
+      color: white;
+      background: var(--primary-blue);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button.light {
+      color: var(--primary-blue);
+      background: #eaf3fc;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 72px 0 58px;
+      background: linear-gradient(135deg, #f4f9ff, #ffffff);
+      border-bottom: 1px solid #edf3f9;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      margin: 0 0 16px;
+      font-size: 45px;
+      line-height: 1.12;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .search-box {
+      display: flex;
+      max-width: 900px;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 14px;
+      background: white;
+      border: 1px solid var(--border-blue);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px #174e8d12;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: 0;
+      outline: 0;
+      font-size: 15px;
+    }
+
+    .search-box input + input {
+      border-left: 1px solid #e4ebf2;
+    }
+
+    /* Main content */
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 160px;
+      gap: 25px;
+      padding: 45px 0;
+    }
+
+    .ad-space {
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      color: #8995a5;
+      background: var(--ad-grey);
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .main-content h2 {
+      margin: 0 0 18px;
+      font-size: 26px;
+    }
+
+    /* Filters */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 22px;
+    }
+
+    .filters select {
+      padding: 10px;
+      color: #53657b;
+      background: white;
+      border: 1px solid var(--border-blue);
+      border-radius: 6px;
+    }
+
+    /* Job cards */
+
+    .job-card {
+      display: block;
+      margin-bottom: 15px;
+      padding: 21px;
+      background: white;
+      border: 1px solid var(--border-blue);
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+
+    .job-card:hover {
+      border-color: #8ebbe8;
+      box-shadow: 0 10px 25px #1458a61a;
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .organization {
+      color: var(--primary-blue);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .job-card h3 {
+      margin: 8px 0 16px;
+      color: #111827;
+      font-size: 20px;
+    }
+
+    .logo-box {
+      width: 94px;
+      height: 55px;
+      display: grid;
+      flex: none;
+      place-items: center;
+      color: #91a1b3;
+      border: 1px solid #e3eaf2;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .job-meta span {
+      margin-right: 5px;
+      color: var(--primary-blue);
+    }
+
+    .view-job {
+      float: right;
+      margin-top: 14px;
+      color: var(--primary-blue);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* Categories */
+
+    .categories {
+      padding: 48px 0;
+      background: var(--light-blue);
+    }
+
+    .categories h2 {
+      margin: 0 0 24px;
+      text-align: center;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .category {
+      padding: 18px 12px;
+      color: #31516f;
+      background: white;
+      border: 1px solid var(--border-blue);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .category:hover {
+      color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 45px 0 20px;
+      color: #dbe8f6;
+      background: var(--dark-blue);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .footer-grid h3 {
+      color: white;
+      font-size: 14px;
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      display: block;
+      color: #b9cbe0;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .copyright {
+      margin-top: 28px;
+      padding-top: 18px;
+      color: #aac0d8;
+      border-top: 1px solid #315276;
+      font-size: 12px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 850px) {
+      .navbar {
+        flex-wrap: wrap;
+        min-height: auto;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .ad-space {
+        min-height: 100px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .search-box {
+        display: block;
+      }
+
+      .search-box input,
+      .search-box input + input {
+        display: block;
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid #e4ebf2;
+      }
+
+      .search-box .button {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .login {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .category-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+
+      <a class="brand" href="#home">
+        <span class="logo-mark">IJ</span>
+
+        <span>
+          <span class="brand-name">ImpactJobs</span>
+          <span class="tagline">Careers that create change</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#organizations">Organizations</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About Us</a>
+      </nav>
+
+      <div class="actions">
+        <span class="login">⌕</span>
+        <a class="login" href="#">Login</a>
+        <button class="button light">Register</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Search Section -->
+  <section class="hero" id="home">
+    <div class="container">
+
+      <h1>Find Meaningful Jobs. Build a Better Future.</h1>
+
+      <p>
+        Discover opportunities in NGOs, CSR, social development,
+        education, research and the development sector.
+      </p>
+
+      <form class="search-box" id="search-form">
+        <input
+          id="search-term"
+          type="search"
+          placeholder="Search Job Title, Skills or Organization"
+        >
+
+        <input
+          id="search-location"
+          type="search"
+          placeholder="Location"
+        >
+
+        <button class="button" type="submit">
+          Search Jobs
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Job Listing Area -->
+  <section class="container main-layout">
+
+    <aside class="ad-space">
+      Ad Space
+    </aside>
+
+    <main class="main-content" id="jobs">
+
+      <h2>Latest Job Opportunities</h2>
+
+      <div class="filters">
+        <select id="category-filter">
+          <option value="">Job Category</option>
+          <option value="NGO">NGO Jobs</option>
+          <option value="CSR">CSR Jobs</option>
+          <option value="Education">Education</option>
+          <option value="Research">Research</option>
+        </select>
+
+        <select id="location-filter">
+          <option value="">Location</option>
+          <option value="Remote">Remote</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Odisha">Odisha</option>
+        </select>
+
+        <select id="experience-filter">
+          <option value="">Experience</option>
+          <option value="0–2">0–2 years</option>
+          <option value="3–5">3–5 years</option>
+          <option value="5+">5+ years</option>
+        </select>
+
+        <select id="type-filter">
+          <option value="">Employment Type</option>
+          <option value="Full Time">Full Time</option>
+          <option value="Part Time">Part Time</option>
+          <option value="Contract">Contract</option>
+        </select>
+
+        <button class="button light" id="clear-filters" type="button">
+          Clear Filters
+        </button>
+      </div>
+
+      <div id="job-list"></div>
+
+    </main>
+
+    <aside class="ad-space">
+      Ad Space
+    </aside>
+
+  </section>
+
+  <!-- Categories -->
+  <section class="categories" id="categories">
+    <div class="container">
+
+      <h2>Explore Jobs by Category</h2>
+
+      <div class="category-grid">
+        <a class="category" href="#">NGO Jobs</a>
+        <a class="category" href="#">CSR Jobs</a>
+        <a class="category" href="#">Project Management</a>
+        <a class="category" href="#">Monitoring & Evaluation</a>
+        <a class="category" href="#">Social Research</a>
+        <a class="category" href="#">Education</a>
+        <a class="category" href="#">Social Work</a>
+        <a class="category" href="#">Rural Development</a>
+        <a class="category" href="#">Livelihoods</a>
+        <a class="category" href="#">Public Health</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="about">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>ABOUT</h3>
+          <p>
+            Meaningful opportunities for professionals building
+            a more inclusive and sustainable future.
+          </p>
+        </div>
+
+        <div>
+          <h3>QUICK LINKS</h3>
+          <a href="#home">Home</a>
+          <a href="#jobs">Jobs</a>
+          <a href="#organizations">Organizations</a>
+          <a href="#about">About Us</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div>
+          <h3>JOB SEEKERS</h3>
+          <a href="#jobs">Browse Jobs</a>
+          <a href="#">Create Profile</a>
+          <a href="#">Career Resources</a>
+        </div>
+
+        <div>
+          <h3>ORGANIZATIONS</h3>
+          <a href="#">Post a Job</a>
+          <a href="#">Employer Login</a>
+          <a href="#">Organization Profile</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 ImpactJobs. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /*
+      IMPORTANT:
+      Replace the value below with your Google Apps Script Web App URL.
+
+      Example:
+      const API_URL =
+      "https://script.google.com/macros/s/ABC123/exec";
+    */
+
+    const API_URL = "https://script.google.com/macros/s/AKfycbw75taqFAJhumaE9wDWD00meETuvVL-Eu_qV8LPE9gHDS-QgwIFjEbG8TKSBP_hmb-_qQ/exec";
+
+    /*
+      These sample jobs appear until you connect Google Sheets.
+    */
+
+    const sampleJobs = [
+      {
+        ID: "job-001",
+        Title: "District Program Manager",
+        Company: "Tata Steel Foundation",
+        Location: "Jharkhand, Odisha",
+        Skills: "3–5 years",
+        "Date Posted": "18-07-2026",
+        URL: "job.html?id=job-001"
+      },
+      {
+        ID: "job-002",
+        Title: "Education Program Officer",
+        Company: "ABC Foundation",
+        Location: "Remote",
+        Skills: "2–4 years",
+        "Date Posted": "25-07-2026",
+        URL: "job.html?id=job-002"
+      }
+    ];
+
+    let allJobs = [];
+
+    function escapeHTML(value) {
+      return String(value || "").replace(/[&<>"']/g, function(character) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        }[character];
+      });
+    }
+
+    function renderJobs(jobs) {
+      const jobList = document.getElementById("job-list");
+
+      if (!jobs.length) {
+        jobList.innerHTML = "<p>No jobs found.</p>";
+        return;
+      }
+
+      jobList.innerHTML = jobs.map(function(job) {
+        const jobURL = job.URL || ("job.html?id=" + job.ID);
+
+        return `
+          <a class="job-card" href="${escapeHTML(jobURL)}">
+
+            <div class="card-top">
+              <div>
+                <div class="organization">
+                  ${escapeHTML(job.Company)}
+                </div>
+
+                <h3>
+                  ${escapeHTML(job.Title)}
+                </h3>
+              </div>
+
+              <div class="logo-box">
+                Logo
+              </div>
+            </div>
+
+            <div class="job-meta">
+              <div>
+                <span>⌖</span>
+                ${escapeHTML(job.Location)}
+              </div>
+
+              <div>
+                <span>▣</span>
+                ${escapeHTML(job.Skills || "Experience not specified")}
+              </div>
+
+              <div>
+                <span>◷</span>
+                ${escapeHTML(job["Date Posted"] || "")}
+              </div>
+            </div>
+
+            <div class="view-job">
+              View Job →
+            </div>
+
+          </a>
+        `;
+      }).join("");
+    }
+
+    function filterJobs() {
+      const searchTerm =
+        document.getElementById("search-term").value.toLowerCase();
+
+      const searchLocation =
+        document.getElementById("search-location").value.toLowerCase();
+
+      const category =
+        document.getElementById("category-filter").value.toLowerCase();
+
+      const location =
+        document.getElementById("location-filter").value.toLowerCase();
+
+      const experience =
+        document.getElementById("experience-filter").value.toLowerCase();
+
+      const employmentType =
+        document.getElementById("type-filter").value.toLowerCase();
+
+      const filteredJobs = allJobs.filter(function(job) {
+        const jobText = Object.values(job).join(" ").toLowerCase();
+
+        return (
+          jobText.includes(searchTerm) &&
+          jobText.includes(searchLocation) &&
+          jobText.includes(category) &&
+          jobText.includes(location) &&
+          jobText.includes(experience) &&
+          jobText.includes(employmentType)
+        );
+      });
+
+      renderJobs(filteredJobs);
+    }
+
+    document
+      .getElementById("search-form")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+        filterJobs();
+      });
+
+    document
+      .getElementById("category-filter")
+      .addEventListener("change", filterJobs);
+
+    document
+      .getElementById("location-filter")
+      .addEventListener("change", filterJobs);
+
+    document
+      .getElementById("experience-filter")
+      .addEventListener("change", filterJobs);
+
+    document
+      .getElementById("type-filter")
+      .addEventListener("change", filterJobs);
+
+    document
+      .getElementById("clear-filters")
+      .addEventListener("click", function() {
+        document.getElementById("search-term").value = "";
+        document.getElementById("search-location").value = "";
+        document.getElementById("category-filter").value = "";
+        document.getElementById("location-filter").value = "";
+        document.getElementById("experience-filter").value = "";
+        document.getElementById("type-filter").value = "";
+
+        renderJobs(allJobs);
+      });
+
+    /*
+      Load jobs from Google Sheets through Apps Script.
+      If the URL is not added or fails, sample jobs are shown.
+    */
+
+    if (API_URL.indexOf("http") === 0) {
+      fetch(API_URL)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          allJobs = data;
+          renderJobs(allJobs);
+        })
+        .catch(function() {
+          allJobs = sampleJobs;
+          renderJobs(allJobs);
+        });
+    } else {
+      allJobs = sampleJobs;
+      renderJobs(allJobs);
+    }
+  </script>
+
+</body>
+</html>
