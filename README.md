@@ -1,5 +1,8 @@
 # ImpactJobs by NEIC
 
+## Free hourly job collection
+See [COLLECTOR_SETUP.md](COLLECTOR_SETUP.md) for the independent GitHub Actions → Google Sheets collector, one-time credential setup, source configuration, duplicate rules and the exact files to upload. It schedules collection at every hour's :00 in India (GitHub execution may be delayed). New entries are Drafts; no AI service is used. The older deployment notes below describe the original website setup and may no longer reflect your live deployment.
+
 Suggested subdomain: **impactjobs.neic.in**. Alternatives: **socialcareers.neic.in**, **purpose.neic.in**, **csrjobs.neic.in**. No domain or DNS changes have been made.
 
 ## Current blocker

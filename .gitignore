@@ -1,0 +1,8 @@
+node_modules/
+collector/output/
+.env
+.env.*
+*service-account*.json
+credentials.json
+*.pem
+impactjobs-collector-update.zip
